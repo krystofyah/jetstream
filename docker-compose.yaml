@@ -6,10 +6,16 @@ services:
       dockerfile: Dockerfile
     restart: always
     container_name: jetstream
-    network_mode: host
+    # network_mode: host
+    networks:
+      - sounds-shared-network
     volumes:
       - ./data:/data
     environment:
       - JETSTREAM_DATA_DIR=/data
 # livness check interval to restart when no events are received (default: 15sec)
       - JETSTREAM_LIVENESS_TTL=15s
+networks:
+  sounds-shared-network:
+    external: true
+    # driver: bridge

@@ -32,5 +32,9 @@ COPY --from=certs /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certifica
 # Copy the binary from the first stage.
 COPY --from=builder /app/jetstream .
 
+EXPOSE 6009
+EXPOSE 6008
+
 # Set the startup command to run the binary
 CMD ["./jetstream"]
+
